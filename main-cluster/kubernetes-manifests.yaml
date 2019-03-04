@@ -216,7 +216,7 @@ spec:
     spec:
       containers:
         - name: server
-          image: gcr.io/google-samples/microservices-demo/frontend:31df60f
+          image: harbor.ops.action.cloudz.co.kr/hipster-shop/frontend:1.0
           ports:
           - containerPort: 8080
           readinessProbe:
