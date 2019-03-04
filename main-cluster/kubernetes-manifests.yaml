@@ -360,7 +360,7 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: productcatalogservice
+  name: productcatalogservice-v1
 spec:
   template:
     metadata:
@@ -371,7 +371,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: gcr.io/google-samples/microservices-demo/productcatalogservice:31df60f
+        image: harbor.ops.action.cloudz.co.kr/hipster-shop/productcatalogservice:1.0
         ports:
         - containerPort: 3550
         readinessProbe:
