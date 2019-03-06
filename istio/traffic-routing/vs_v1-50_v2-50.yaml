@@ -23,8 +23,8 @@ spec:
     - destination:
         host: productcatalogservice
         subset: v1
-      weight: 34
+      weight: 50
     - destination:
         host: productcatalogservice
         subset: v2
-      weight: 66
+      weight: 50
