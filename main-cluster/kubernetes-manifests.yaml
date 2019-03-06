@@ -216,7 +216,7 @@ spec:
     spec:
       containers:
         - name: server
-          image: harbor.ops.action.cloudz.co.kr/hipster-shop/frontend:1.1
+          image: harbor.ops.action.cloudz.co.kr/hipster-shop/frontend:1.3
           ports:
           - containerPort: 8080
           readinessProbe:

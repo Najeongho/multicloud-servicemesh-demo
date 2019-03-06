@@ -27,7 +27,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: harbor.ops.action.cloudz.co.kr/hipster-shop/productcatalogservice:2.2
+        image: harbor.ops.action.cloudz.co.kr/hipster-shop/productcatalogservice:2.3
         imagePullPolicy: Always
         ports:
         - containerPort: 3550
