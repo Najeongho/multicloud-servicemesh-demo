@@ -1,4 +1,4 @@
-# Copyright 2019 Google LLC
+# Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,11 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: emailservice
 spec:
+  selector:
+    matchLabels:
+      app: emailservice
   template:
     metadata:
       labels:
@@ -25,7 +28,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: gcr.io/google-samples/microservices-demo/emailservice:31df60f
+        image: harbor.ops.action.cloudz.co.kr/hipster-shop/emailservice:1.0
         ports:
         - containerPort: 8080
         readinessProbe:
@@ -57,7 +60,7 @@ spec:
     port: 5000
     targetPort: 8080
 ---
-# Copyright 2019 Google LLC
+# Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -71,11 +74,14 @@ spec:
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: checkoutservice
 spec:
+  selector:
+    matchLabels:
+      app: checkoutservice
   template:
     metadata:
       labels:
@@ -83,7 +89,7 @@ spec:
     spec:
       containers:
         - name: server
-          image: gcr.io/google-samples/microservices-demo/checkoutservice:31df60f
+          image: harbor.ops.action.cloudz.co.kr/hipster-shop/checkoutservice:1.0
           ports:
           - containerPort: 5050
           readinessProbe:
@@ -128,7 +134,7 @@ spec:
     port: 5050
     targetPort: 5050
 ---
-# Copyright 2019 Google LLC
+# Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -142,11 +148,14 @@ spec:
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: recommendationservice
 spec:
+  selector:
+    matchLabels:
+      app: recommendationservice
   template:
     metadata:
       labels:
@@ -155,7 +164,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: gcr.io/google-samples/microservices-demo/recommendationservice:31df60f
+        image: harbor.ops.action.cloudz.co.kr/hipster-shop/recommendationservice:1.0
         ports:
         - containerPort: 8080
         readinessProbe:
@@ -190,7 +199,7 @@ spec:
     port: 8080
     targetPort: 8080
 ---
-# Copyright 2019 Google LLC
+# Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -204,11 +213,14 @@ spec:
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend
 spec:
+  selector:
+    matchLabels:
+      app: frontend
   template:
     metadata:
       labels:
@@ -216,7 +228,7 @@ spec:
     spec:
       containers:
         - name: server
-          image: harbor.ops.action.cloudz.co.kr/hipster-shop/frontend:1.5
+          image: harbor.ops.action.cloudz.co.kr/hipster-shop/frontend:1.4
           ports:
           - containerPort: 8080
           readinessProbe:
@@ -286,7 +298,7 @@ spec:
     port: 80
     targetPort: 8080
 ---
-# Copyright 2019 Google LLC
+# Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -300,11 +312,14 @@ spec:
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: paymentservice
 spec:
+  selector:
+    matchLabels:
+      app: paymentservice
   template:
     metadata:
       labels:
@@ -313,7 +328,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: gcr.io/google-samples/microservices-demo/paymentservice:31df60f
+        image: harbor.ops.action.cloudz.co.kr/hipster-shop/paymentservice:1.0
         ports:
         - containerPort: 50051
         readinessProbe:
@@ -343,7 +358,7 @@ spec:
     port: 50051
     targetPort: 50051
 ---
-# Copyright 2019 Google LLC
+# Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -357,21 +372,23 @@ spec:
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: productcatalogservice-v1
 spec:
+  selector:
+    matchLabels:
+      app: productcatalogservice
   template:
     metadata:
       labels:
         app: productcatalogservice
-        version: v1
     spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: harbor.ops.action.cloudz.co.kr/hipster-shop/productcatalogservice:1.0
+        image: harbor.ops.action.cloudz.co.kr/hipster-shop/productcatalogservice:1.1
         ports:
         - containerPort: 3550
         readinessProbe:
@@ -404,7 +421,7 @@ spec:
     port: 3550
     targetPort: 3550
 ---
-# Copyright 2019 Google LLC
+# Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -418,11 +435,14 @@ spec:
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: cartservice
 spec:
+  selector:
+    matchLabels:
+      app: cartservice
   template:
     metadata:
       labels:
@@ -431,7 +451,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: gcr.io/google-samples/microservices-demo/cartservice:31df60f
+        image: harbor.ops.action.cloudz.co.kr/hipster-shop/cartserviceservice:1.0
         ports:
         - containerPort: 7070
         env:
@@ -471,7 +491,7 @@ spec:
     port: 7070
     targetPort: 7070
 ---
-# Copyright 2019 Google LLC
+# Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -485,11 +505,14 @@ spec:
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: loadgenerator
 spec:
+  selector:
+    matchLabels:
+      app: loadgenerator
   replicas: 1
   template:
     metadata:
@@ -501,7 +524,7 @@ spec:
       initContainers:
       - name: wait-frontend
         image: alpine:3.6
-        command: ['sh', '-c', 'set -x;  apk add --no-cache curl;
+        command: ['sh', '-c', 'set -x;  apk add --no-cache curl &&
           until timeout -t 2 curl -f "http://${FRONTEND_ADDR}"; do
             echo "waiting for http://${FRONTEND_ADDR}";
             sleep 2;
@@ -511,7 +534,7 @@ spec:
           value: "frontend:80"
       containers:
       - name: main
-        image: gcr.io/google-samples/microservices-demo/loadgenerator:31df60f
+        image: harbor.ops.action.cloudz.co.kr/hipster-shop/loadgenerator:1.0
         env:
         - name: FRONTEND_ADDR
           value: "frontend:80"
@@ -525,7 +548,7 @@ spec:
             cpu: 500m
             memory: 512Mi
 ---
-# Copyright 2019 Google LLC
+# Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -539,11 +562,14 @@ spec:
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: currencyservice
 spec:
+  selector:
+    matchLabels:
+      app: currencyservice
   template:
     metadata:
       labels:
@@ -552,7 +578,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: gcr.io/google-samples/microservices-demo/currencyservice:31df60f
+        image: harbor.ops.action.cloudz.co.kr/hipster-shop/currencyservice:1.0
         ports:
         - name: grpc
           containerPort: 7000
@@ -583,7 +609,7 @@ spec:
     port: 7000
     targetPort: 7000
 ---
-# Copyright 2019 Google LLC
+# Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -597,11 +623,14 @@ spec:
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: shippingservice
 spec:
+  selector:
+    matchLabels:
+      app: shippingservice
   template:
     metadata:
       labels:
@@ -609,7 +638,7 @@ spec:
     spec:
       containers:
       - name: server
-        image: gcr.io/google-samples/microservices-demo/shippingservice:31df60f
+        image: harbor.ops.action.cloudz.co.kr/hipster-shop/shippingservice:1.0
         ports:
         - containerPort: 50051
         readinessProbe:
@@ -643,7 +672,7 @@ spec:
     port: 50051
     targetPort: 50051
 ---
-# Copyright 2019 Google LLC
+# Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -657,11 +686,14 @@ spec:
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: redis-cart
 spec:
+  selector:
+    matchLabels:
+      app: redis-cart
   template:
     metadata:
       labels:
@@ -707,7 +739,7 @@ spec:
     port: 6379
     targetPort: 6379
 ---
-# Copyright 2019 Google LLC
+# Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -721,11 +753,14 @@ spec:
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: adservice
 spec:
+  selector:
+    matchLabels:
+      app: adservice
   template:
     metadata:
       labels:
@@ -734,7 +769,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: gcr.io/google-samples/microservices-demo/adservice:31df60f
+        image: harbor.ops.action.cloudz.co.kr/hipster-shop/adservice:1.0
         ports:
         - containerPort: 9555
         env:

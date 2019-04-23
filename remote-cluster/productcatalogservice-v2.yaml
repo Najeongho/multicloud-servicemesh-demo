@@ -13,11 +13,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: productcatalogservice-v2
 spec:
+  selector:
+    matchLabels:
+      app: productcatalogservice
+      version: v2
   template:
     metadata:
       labels:
@@ -28,7 +32,6 @@ spec:
       containers:
       - name: server
         image: harbor.ops.action.cloudz.co.kr/hipster-shop/productcatalogservice:2.5
-        imagePullPolicy: Always
         ports:
         - containerPort: 3550
         readinessProbe:
@@ -37,6 +40,9 @@ spec:
         livenessProbe:
           exec:
             command: ["/bin/grpc_health_probe", "-addr=:3550"]
+#        env:
+#          - name: JAEGER_SERVICE_ADDR
+#            value: "jaeger-collector:14268"
         resources:
           requests:
             cpu: 100m
