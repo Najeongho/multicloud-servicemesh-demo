@@ -249,7 +249,8 @@ spec:
                 value: "shop_session-id=x-liveness-probe"
           env:
           - name: PRODUCT_CATALOG_SERVICE_ADDR
-            value: "productcatalogservice:3550"
+            value: "productcatalogservice:3550"  ## Version 1
+#            value: "productcatalogservice.hipster-shop.global:3550"  ## Version 2           
           - name: CURRENCY_SERVICE_ADDR
             value: "currencyservice:7000"
           - name: CART_SERVICE_ADDR
